@@ -18,6 +18,7 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { createAccount } from "@/lib/actions/user.actions";
+import OtpModal from "@/components/OTPModal";
 
 const authFormSchema = (formType: FormType) => {
   return z.object({
@@ -67,7 +68,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="auth-form">
-          <h1 className="form-title text-4xl font-black">
+          <h1 className="form-title text-5xl font-black">
             {type === "sign-in" ? "Sign In" : "Sign Up"}
           </h1>
           {type === "sign-up" && (
@@ -80,7 +81,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                     <FormLabel className="shad-form-label">Full Name</FormLabel>
                     <FormControl>
                       <Input
-                        className="shad-input"
+                        className="shad-input bg-yellow-50"
                         placeholder="Enter your full name"
                         {...field}
                       />
@@ -102,7 +103,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                   <FormControl>
                     <Input
                       placeholder="Enter your email"
-                      className="shad-input"
+                      className="shad-input bg-yellow-50"
                       {...field}
                     />
                   </FormControl>
@@ -139,6 +140,9 @@ const AuthForm = ({ type }: { type: FormType }) => {
           </div>
         </form>
       </Form>
+      {accountId && (
+        <OtpModal email={form.getValues("email")} accountId={accountId} />
+      )}
     </>
   );
 };

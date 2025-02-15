@@ -111,7 +111,7 @@
   }
 
   .shad-form-item {
-    @apply flex h-[78px] flex-col justify-center rounded-xl border border-light-300 px-4 shadow-drop-1;
+    @apply flex h-[78px] flex-col justify-center rounded-xl border px-4 shadow-drop-1;
   }
   .shad-form-label {
     @apply text-light-100 text-[14px] leading-[20px] font-normal pt-2  w-full !important;
