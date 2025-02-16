@@ -13,9 +13,9 @@
 
   /* Remove scrollbar */
   .remove-scrollbar::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-    border-radius: 0px;
+    width: 0;
+    height: 0;
+    border-radius: 0;
   }
 
   .remove-scrollbar::-webkit-scrollbar-track {
@@ -24,7 +24,7 @@
 
   .remove-scrollbar::-webkit-scrollbar-thumb {
     background: transparent;
-    border-radius: 0px;
+    border-radius: 0;
   }
 
   .remove-scrollbar::-webkit-scrollbar-thumb:hover {
@@ -193,7 +193,7 @@
     @apply flex w-full flex-col xl:flex-row xl:justify-between !important;
   }
   .recent-file-name {
-    @apply subtitle-2 line-clamp-1 w-full text-light-100 sm:max-w-[200px] lg:max-w-[250px] !important;
+    @apply line-clamp-1 w-full text-light-100 sm:max-w-[200px] lg:max-w-[250px] !important;
   }
   .recent-file-date {
     @apply  text-light-100/80 !important;
@@ -241,7 +241,7 @@
     @apply  w-[30%] text-light-100 !important;
   }
   .file-details-value {
-    @apply subtitle-2 flex-1 !important;
+    @apply flex-1 !important;
   }
 
   .share-wrapper {
@@ -299,7 +299,7 @@
     @apply h3 font-bold md:text-center lg:text-left !important;
   }
   .chart-description {
-    @apply subtitle-1 mt-2 w-full text-white/70 md:text-center lg:text-left !important;
+    @apply mt-2 w-full text-white/70 md:text-center lg:text-left !important;
   }
 
   /* FileUploader */
@@ -313,7 +313,7 @@
     @apply flex items-center justify-between  gap-3 rounded-xl p-3 shadow-drop-3 !important;
   }
   .preview-item-name {
-    @apply subtitle-2 mb-2 line-clamp-1 max-w-[300px] !important;
+    @apply  mb-2 line-clamp-1 max-w-[300px] !important;
   }
 
   .error-toast {

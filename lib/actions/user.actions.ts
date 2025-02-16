@@ -132,7 +132,6 @@ export const signInUser = async ({ email }: { email: string }) => {
     const existingUser = await getUserByEmail(email);
 
     if (existingUser) {
-      console.log(existingUser);
       await sendEmailOTP({ email });
       return parseStringify({ accountId: existingUser.account_id });
     }
