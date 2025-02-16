@@ -61,7 +61,7 @@ const OtpModal = ({
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogContent className="shad-alert-dialog">
         <AlertDialogHeader className="relative flex justify-center">
-          <AlertDialogTitle className="text-center text-3xl font-bold pb-2">
+          <AlertDialogTitle className="pb-2 text-center text-3xl font-bold">
             Enter Your OTP
             <CircleX
               onClick={() => setIsOpen(false)}
@@ -89,14 +89,14 @@ const OtpModal = ({
           <div className="flex w-full flex-col gap-4">
             <AlertDialogAction
               onClick={handleSubmit}
-              className="shad-submit-btn text-lg h-12"
+              className="shad-submit-btn h-12 text-lg"
               type="button"
             >
               Submit
               {isLoading && <Loader2 className="ml-2 animate-spin" />}
             </AlertDialogAction>
 
-            <div className=" flex justify-center items-center mt-2 text-center text-light-100">
+            <div className=" mt-2 flex items-center justify-center text-center text-light-100">
               <p className="text-base">Didn&apos;t get a code?</p>
               <Button
                 type="button"

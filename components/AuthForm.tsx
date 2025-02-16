@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -14,11 +14,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
-import { createAccount } from "@/lib/actions/user.actions";
+import { createAccount, signInUser } from "@/lib/actions/user.actions";
 import OtpModal from "@/components/OTPModal";
+
+type FormType = "sign-in" | "sign-up";
 
 const authFormSchema = (formType: FormType) => {
   return z.object({
@@ -29,8 +30,6 @@ const authFormSchema = (formType: FormType) => {
         : z.string().optional(),
   });
 };
-
-type FormType = "sign-in" | "sign-up";
 
 const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -51,10 +50,14 @@ const AuthForm = ({ type }: { type: FormType }) => {
     setErrorMessage("");
 
     try {
-      const user = await createAccount({
-        fullName: values.fullName || "",
-        email: values.email,
-      });
+      console.log(type);
+      const user =
+        type === "sign-up"
+          ? await createAccount({
+              fullName: values.fullName || "",
+              email: values.email,
+            })
+          : await signInUser({ email: values.email });
 
       setAccountId(user.accountId);
     } catch {
@@ -119,12 +122,12 @@ const AuthForm = ({ type }: { type: FormType }) => {
             type="submit"
           >
             {type === "sign-in" ? "Sign In" : "Sign Up"}
-            {isLoading && <Loader2 className="animate-spin ml-2" />}
+            {isLoading && <Loader2 className="ml-2 animate-spin" />}
           </Button>
 
           {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-          <div className="flex justify-center items-center">
+          <div className="flex items-center justify-center">
             <p className="text-light-100">
               {type === "sign-in"
                 ? "Dont have an account?"
