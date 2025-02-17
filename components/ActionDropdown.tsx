@@ -27,6 +27,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { ActionType } from "@/types";
+import { renameFile } from "@/lib/actions/file.action";
+import { Loader2 } from "lucide-react";
 
 const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,7 +47,28 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     setName(file.name);
   };
 
-  const handleAction = async () => {};
+  const handleAction = async () => {
+    if (!action) return;
+    setIsLoading(true);
+    let success = false;
+
+    const actions = {
+      rename: () =>
+        renameFile({ fileId: file.$id, name, extension: file.extension, path }),
+      share: () => {
+        console.log("share");
+      },
+      delete: () => {
+        console.log("delete");
+      },
+    };
+
+    success = await actions[action.value as keyof typeof actions]();
+
+    if (success) closeAllModals();
+
+    setIsLoading(false);
+  };
 
   const renderDialogContent = () => {
     if (!action) return null;
@@ -80,15 +103,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
               className="text-lg font-semibold modal-submit-button"
             >
               <p className="capitalize">{value}</p>
-              {isLoading && (
-                <Image
-                  src="/assets/icons/loader.svg"
-                  alt="loader"
-                  width={24}
-                  height={24}
-                  className="animate-spin"
-                />
-              )}
+              {isLoading && <Loader2 className="animate-spin" />}
             </Button>
           </DialogFooter>
         )}
