@@ -43,6 +43,7 @@ export const getFileType = (fileName: string) => {
     "txt",
     "xls",
     "xlsx",
+    "pptx",
     "csv",
     "rtf",
     "ods",
@@ -125,6 +126,8 @@ export const getFileIcon = (
       return "/assets/icons/file-docx.svg";
     case "csv":
       return "/assets/icons/file-csv.svg";
+    case "pptx":
+      return "/assets/icons/file-pptx.svg";
     case "txt":
       return "/assets/icons/file-txt.svg";
     case "xls":
