@@ -26,12 +26,11 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
             height={50}
             className="hidden h-auto md:block"
           />
-          <p className="hidden text-3xl font-bold text-brand-100 lg:block">
+          <p className="hidden lg:text-3xl font-bold text-brand-100 lg:block">
             ByteMe
           </p>
         </div>
       </Link>
-
       <nav className="sidebar-nav">
         <ul className="flex flex-1 flex-col gap-4">
           {navItems.map(({ url, name, icon }) => (

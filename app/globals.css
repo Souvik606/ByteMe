@@ -178,10 +178,10 @@
     @apply relative mt-6 rounded-[20px] bg-white p-5 transition-all hover:scale-105 !important;
   }
   .summary-type-icon {
-    @apply absolute -left-3 top-[-25px] z-10 w-[190px] object-contain !important;
+    @apply absolute -left-3 top-[-20px] md:-left-6 md:top-[-20px] z-10 w-[85px] object-contain !important;
   }
   .summary-type-size {
-    @apply h4 relative z-20 w-full text-right !important;
+    @apply  relative z-20 w-full text-right !important;
   }
   .summary-type-title {
     @apply  relative z-20 text-center !important;
@@ -296,7 +296,7 @@
     @apply fill-white text-4xl font-bold !important;
   }
   .chart-title {
-    @apply h3 font-bold md:text-center lg:text-left !important;
+    @apply  font-bold md:text-center lg:text-left !important;
   }
   .chart-description {
     @apply mt-2 w-full text-white/70 md:text-center lg:text-left !important;

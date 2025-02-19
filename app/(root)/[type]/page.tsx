@@ -1,15 +1,24 @@
 import React from "react";
 import { FileType, SearchParamProps } from "@/types";
 import Sort from "@/components/Sort";
-import { getFiles } from "@/lib/actions/file.action";
+import { getFiles, getTotalSpaceUsed } from "@/lib/actions/file.action";
 import { Models } from "node-appwrite";
 import Card from "@/components/Card";
-import { getFileTypesParams } from "@/lib/utils";
+import {
+  convertFileSize,
+  getFileTypesParams,
+  getUsageSummary,
+} from "@/lib/utils";
 
 const Page = async ({ searchParams, params }: SearchParamProps) => {
   const type = ((await params)?.type as string) || "";
   const searchText = ((await searchParams)?.query as string) || "";
   const sort = ((await searchParams)?.sort as string) || "";
+  const totalSpace = await getTotalSpaceUsed();
+  const usageSummary = getUsageSummary(totalSpace);
+  const usageInfo = convertFileSize(
+    usageSummary.find((info) => info.title.toLowerCase() === type)?.size || 0,
+  );
 
   const types = getFileTypesParams(type) as FileType[];
 
@@ -21,7 +30,7 @@ const Page = async ({ searchParams, params }: SearchParamProps) => {
         <h1 className="text-4xl font-bold capitalize text-brand-500">{type}</h1>
         <div className="total-size-section">
           <p className="text-lg">
-            Total: <span className="font-bold">0 MB</span>
+            Total: <span className="font-bold">{usageInfo}</span>
           </p>
 
           <div className="sort-container">
