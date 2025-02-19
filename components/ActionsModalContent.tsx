@@ -11,16 +11,19 @@ const ImageThumbnail = ({ file }: { file: Models.Document }) => (
   <div className="file-details-thumbnail">
     <Thumbnail type={file.type} extension={file.extension} url={file.url} />
     <div className="flex flex-col">
-      <p className="subtitle-2 mb-1">{file.name}</p>
-      <FormattedDateTime date={file.$createdAt} className="caption" />
+      <p className="mb-1 font-bold">{file.name}</p>
+      <FormattedDateTime
+        date={file.$createdAt}
+        className="text-sm font-semibold"
+      />
     </div>
   </div>
 );
 
 const DetailRow = ({ label, value }: { label: string; value: string }) => (
   <div className="flex">
-    <p className="file-details-label text-left">{label}</p>
-    <p className="file-details-value text-left">{value}</p>
+    <p className="file-details-label text-sm text-left">{label}</p>
+    <p className="file-details-value text-sm text-left font-bold">{value}</p>
   </div>
 );
 
@@ -50,7 +53,7 @@ export const ShareInput = ({ file, onInputChange, onRemove }: Props) => {
       <ImageThumbnail file={file} />
 
       <div className="share-wrapper">
-        <p className="subtitle-2 pl-1 text-light-100">
+        <p className="text-sm font-bold pl-1 text-light-100">
           Share file with other users
         </p>
         <Input
@@ -61,8 +64,8 @@ export const ShareInput = ({ file, onInputChange, onRemove }: Props) => {
         />
         <div className="pt-4">
           <div className="flex justify-between">
-            <p className="subtitle-2 text-light-100">Shared with</p>
-            <p className="subtitle-2 text-light-200">
+            <p className="font-bold text-light-100">Shared with</p>
+            <p className="font-bold text-light-200">
               {file.users.length} users
             </p>
           </div>
