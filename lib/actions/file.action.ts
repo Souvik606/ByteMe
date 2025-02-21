@@ -45,7 +45,7 @@ export const uploadFile = async ({
       extension: getFileType(bucketFile.name).extension,
       size: bucketFile.sizeOriginal,
       owner: ownerId,
-      accountId,
+      account_id: accountId,
       users: [],
       bucketFileId: bucketFile.$id,
     };
