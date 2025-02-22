@@ -25,7 +25,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           />
         </div>
       </section>
-      <section className="bg-yellow-50 flex flex-1 flex-col items-center p-4 py-10 lg:justify-center lg:p-10 lg:py-0">
+      <section className="bg-emerald-100 flex flex-1 flex-col items-center p-4 py-10 lg:justify-center lg:p-10 lg:py-0">
         <div className="mb-16 lg:hidden">
           <div className="flex items-center space-x-5">
             <Image src="/mobile-logo.png" alt="logo" width={120} height={80} />
