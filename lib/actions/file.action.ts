@@ -38,6 +38,8 @@ export const uploadFile = async ({
       inputFile,
     );
 
+    console.log(accountId);
+
     const fileDocument = {
       type: getFileType(bucketFile.name).type,
       name: bucketFile.name,
@@ -45,7 +47,7 @@ export const uploadFile = async ({
       extension: getFileType(bucketFile.name).extension,
       size: bucketFile.sizeOriginal,
       owner: ownerId,
-      account_id: accountId,
+      accountId: accountId,
       users: [],
       bucketFileId: bucketFile.$id,
     };
